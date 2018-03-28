@@ -11,15 +11,15 @@ import email.mime.application
 # Create a text/plain message
 msg = email.mime.Multipart.MIMEMultipart()
 msg['Subject'] = 'GUN DETECTED !!'
-msg['From'] = 'itsecb2014@gmail.com'
-msg['To'] = 'vatsalya.singhi@gmail.com'
+msg['From'] = ''
+msg['To'] = ''
 
 # The main body is just another attachment
 body = email.mime.Text.MIMEText("""Gun detected take action""")
 msg.attach(body)
 
 # PDF attachment
-filename='/home/krishnaprasadh/Desktop/gun.jpg'
+filename='/path/to/Desktop/pic.jpg'
 fp=open(filename,'rb')
 att = email.mime.application.MIMEApplication(fp.read(),_subtype="jpg")
 fp.close()
@@ -32,6 +32,6 @@ msg.attach(att)
 # So, I use the default port 25, but I authenticate. 
 s = smtplib.SMTP('smtp.gmail.com')
 s.starttls()
-s.login('itsecb2014@gmail.com','cunningFOX')
-s.sendmail('itsecb2014@gmail.com',['vatsalya.singhi@gmail.com'], msg.as_string())
+s.login('mailid','password')
+s.sendmail('frommailid',['tomailid'], msg.as_string())
 s.quit()
